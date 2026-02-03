@@ -1,6 +1,6 @@
 console.log("triangle(value1, type1, value2, type2)");
 
-function triangle(v1, t1, v2, t2) {
+ const triangle = (v1, t1, v2, t2) => {
 
     const toRad = d => d * Math.PI / 180;
     const toDeg = r => r * 180 / Math.PI;
@@ -55,4 +55,5 @@ function triangle(v1, t1, v2, t2) {
     console.log("beta =", beta);
 
     return "success";
+
 }
