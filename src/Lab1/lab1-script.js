@@ -1,98 +1,108 @@
-console.log("triangle(value1, type1, value2, type2)");
+console.log("Usage: triangle(value1, type1, value2, type2)");
+console.log("Types: 'leg', 'hypotenuse', 'adjacent angle', 'opposite angle', 'angle'");
 
- const triangle = (v1, t1, v2, t2) => {
+function degToRad(deg) {
+    return deg * Math.PI / 180;
+}
 
-    const toRad = d => d * Math.PI / 180;
-    const toDeg = r => r * 180 / Math.PI;
+function radToDeg(rad) {
+    return rad * 180 / Math.PI;
+}
 
-    const validTypes = ["leg", "hypotenuse", "adjacent angle", "opposite angle"];
-    if (!validTypes.includes(t1) || !validTypes.includes(t2)) {
-        console.log("wrong input");
+function triangle(v1, t1, v2, t2) {
+    const types = ["leg", "hypotenuse", "adjacent angle", "opposite angle", "angle"];
+
+    if (!types.includes(t1) || !types.includes(t2)) {
+        console.log("Invalid type. Please read the instructions.");
         return "failed";
     }
 
-    if (v1 <= 0 || v2 <= 0) {
-        console.log("wrong input");
-        return "failed";
-    }
-
-    if ((t1 === "adjacent angle" || t1 === "opposite angle") && (v1 <= 0 || v1 >= 90)) {
-        console.log("wrong input");
-        return "failed";
-    }
-    if ((t2 === "adjacent angle" || t2 === "opposite angle") && (v2 <= 0 || v2 >= 90)) {
-        console.log("wrong input");
-        return "failed";
-    }
+    const MIN = 1e-6;
+    const MAX = 1e6;
+    if (v1 < MIN || v2 < MIN || v1 > MAX || v2 > MAX)
+        return "Invalid values";
 
     let a, b, c, alpha, beta;
 
-    if (t1 === "leg" && t2 === "leg") {
+    if (
+        (t1 === "leg" && t2 === "hypotenuse") ||
+        (t2 === "leg" && t1 === "hypotenuse")
+    ) {
+        a = (t1 === "leg") ? v1 : v2;
+        c = (t1 === "hypotenuse") ? v1 : v2;
+
+        if (a >= c) return "Leg cannot be greater than or equal to the hypotenuse";
+
+        b = Math.sqrt(c * c - a * a);
+        alpha = radToDeg(Math.asin(a / c));
+        beta = 90 - alpha;
+    }
+
+    else if (t1 === "leg" && t2 === "leg") {
         a = v1;
         b = v2;
-        c = Math.sqrt(a*a + b*b);
-    } else if (t1 === "leg" && t2 === "hypotenuse") {
-        a = v1;
-        c = v2;
-        if (a >= c) {
-            console.log("wrong input");
-            return "failed";
-        }
-        b = Math.sqrt(c*c - a*a);
-    } else if (t2 === "leg" && t1 === "hypotenuse") {
-        a = v2;
-        c = v1;
-        if (a >= c) {
-            console.log("wrong input");
-            return "failed";
-        }
-        b = Math.sqrt(c*c - a*a);
-    } else if (t1 === "hypotenuse" && t2 === "opposite angle") {
-        c = v1;
-        alpha = v2;
-        a = c * Math.sin(toRad(alpha));
-        b = c * Math.cos(toRad(alpha));
-    } else if (t2 === "hypotenuse" && t1 === "opposite angle") {
-        c = v2;
-        alpha = v1;
-        a = c * Math.sin(toRad(alpha));
-        b = c * Math.cos(toRad(alpha));
-    } else if (t1 === "hypotenuse" && t2 === "adjacent angle") {
-        c = v1;
-        beta = v2;
-        alpha = 90 - beta;
-        a = c * Math.sin(toRad(alpha));
-        b = c * Math.cos(toRad(alpha));
-    } else if (t2 === "hypotenuse" && t1 === "adjacent angle") {
-        c = v2;
-        beta = v1;
-        alpha = 90 - beta;
-        a = c * Math.sin(toRad(alpha));
-        b = c * Math.cos(toRad(alpha));
-    } else {
-        console.log("wrong input");
+        c = Math.sqrt(a * a + b * b);
+
+        alpha = radToDeg(Math.atan(a / b));
+        beta = 90 - alpha;
+    }
+
+    else if (
+        (t1 === "leg" && t2 === "adjacent angle") ||
+        (t2 === "leg" && t1 === "adjacent angle")
+    ) {
+        a = (t1 === "leg") ? v1 : v2;
+        alpha = (t1 === "adjacent angle") ? v1 : v2;
+
+        if (alpha <= 0 || alpha >= 90) return "Angle must be acute";
+
+        c = a / Math.cos(degToRad(alpha));
+        if (!isFinite(c) || c <= a) return "Invalid ratio";
+
+        b = Math.sqrt(c * c - a * a);
+        beta = 90 - alpha;
+    }
+
+    else if (
+        (t1 === "leg" && t2 === "opposite angle") ||
+        (t2 === "leg" && t1 === "opposite angle")
+    ) {
+        a = (t1 === "leg") ? v1 : v2;
+        alpha = (t1 === "opposite angle") ? v1 : v2;
+
+        if (alpha <= 0 || alpha >= 90) return "Angle must be acute";
+
+        c = a / Math.sin(degToRad(alpha));
+        if (!isFinite(c) || c <= a) return "Invalid ratio";
+
+        b = Math.sqrt(c * c - a * a);
+        beta = 90 - alpha;
+    }
+
+    else if (
+        (t1 === "hypotenuse" && t2 === "angle") ||
+        (t2 === "hypotenuse" && t1 === "angle")
+    ) {
+        c = (t1 === "hypotenuse") ? v1 : v2;
+        alpha = (t1 === "angle") ? v1 : v2;
+
+        if (alpha <= 0 || alpha >= 90) return "Angle must be acute";
+
+        a = c * Math.sin(degToRad(alpha));
+        b = c * Math.cos(degToRad(alpha));
+        beta = 90 - alpha;
+    }
+
+    else {
+        console.log("Incompatible type pair. Please read the instructions.");
         return "failed";
     }
 
-    if (alpha === undefined) {
-    alpha = toDeg(Math.atan2(a, b));
-    }
-
-
-    beta = 90 - alpha;
-
-    a = +a.toFixed(2);
-    b = +b.toFixed(2);
-    c = +c.toFixed(2);
-    alpha = +alpha.toFixed(2);
-    beta = +beta.toFixed(2);
-
-    console.log("a =", a);
-    console.log("b =", b);
-    console.log("c =", c);
-    console.log("alpha =", alpha);
-    console.log("beta =", beta);
+   console.log("a =", a);
+   console.log("b =", b);
+   console.log("c =", c);
+   console.log("alpha =", alpha);
+   console.log("beta =", beta);
 
     return "success";
-
 }
