@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab-5 Konovalov</title>
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.ico" />
+  </head>
+  <body>
+    <main class="page lab5-page">
+      <header class="lab5-header">
+        <div>
+          <p class="title">Pixel Hunt</p>
+          <p class="subtitle">Злови рухомий піксель до завершення таймера</p>
+        </div>
+        <div class="lab5-actions">
+          <a class="back-button" href="../index.html">Головна</a>
+        </div>
+      </header>
+
+      <section class="settings-panel" id="settingsPanel">
+        <h2 class="panel-title">Налаштування Запуску</h2>
+        <p class="panel-text">Складність впливає на швидкість руху, час до кліку та дистанцію від центру.</p>
+
+        <div class="settings-grid">
+          <label class="field">
+            <span class="field-title">Складність: <strong id="difficultyValue">Нормальний</strong></span>
+            <input id="difficultyInput" type="range" min="1" max="5" value="3" />
+          </label>
+
+          <label class="field">
+            <span class="field-title">Колір блоку</span>
+            <input id="colorInput" class="color-input" type="color" value="#ff7a00" />
+          </label>
+        </div>
+
+        <div class="difficulty-preview">
+          <p><span>Швидкість переміщення:</span> <strong id="speedPreview">390 мс</strong></p>
+          <p><span>Час до кліку:</span> <strong id="timePreview">2250 мс</strong></p>
+          <p><span>Радіус появи:</span> <strong id="distancePreview">30% - 50% (середня дистанція)</strong></p>
+          <p><span>Розмір блоку:</span> <strong id="sizePreview">42 пкс</strong></p>
+        </div>
+
+        <button id="startBtn" class="back-button" type="button">Почати гру</button>
+      </section>
+
+      <section class="game-panel hidden" id="gamePanel">
+        <div class="hud">
+          <div class="hud-item"><span>Рахунок</span><strong id="scoreValue">0</strong></div>
+          <div class="hud-item"><span>Залишилось</span><strong id="leftTimeValue">0.00 с</strong></div>
+          <div class="hud-item"><span>Складність</span><strong id="activeDifficulty">-</strong></div>
+        </div>
+
+        <div class="playfield" id="playfield">
+          <button id="target" class="target hidden" type="button" aria-label="ціль"></button>
+          <div class="center-mark" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section id="gameOverModal" class="modal-overlay hidden" aria-hidden="true">
+        <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+          <p id="modalTitle" class="modal-title">Гру завершено</p>
+          <p class="modal-text">Не встиг натиснути вчасно.</p>
+          <p class="modal-score">Рахунок: <strong id="finalScoreValue">0</strong></p>
+          <div class="modal-actions">
+            <button id="modalRestartBtn" class="back-button" type="button">Перезапуск</button>
+            <button id="modalSettingsBtn" class="back-button" type="button">Змінити складність</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>

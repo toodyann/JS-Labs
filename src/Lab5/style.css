@@ -1,0 +1,345 @@
+:root {
+  --lab5-bg-1: #f5f8ff;
+  --lab5-bg-2: #eef7f1;
+  --lab5-bg-3: #fff8e6;
+  --lab5-card: rgba(255, 255, 255, 0.75);
+  --lab5-card-border: rgba(148, 163, 184, 0.28);
+  --lab5-ink: #102238;
+  --lab5-soft-ink: #4a6079;
+  --lab5-accent: #0f6bdb;
+  --target-color: #ff7a00;
+  --target-size: 32px;
+  --target-move-duration: 220ms;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Space Grotesk", "Avenir Next", "Segoe UI", sans-serif;
+  color: var(--lab5-ink);
+  background:
+    radial-gradient(circle at 8% 12%, #d4e6ff 0%, transparent 35%),
+    radial-gradient(circle at 90% 20%, #d9f3e3 0%, transparent 32%),
+    radial-gradient(circle at 70% 90%, #ffe9bd 0%, transparent 34%),
+    linear-gradient(135deg, var(--lab5-bg-1), var(--lab5-bg-2) 52%, var(--lab5-bg-3));
+}
+
+.lab5-page {
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 1.2rem clamp(0.8rem, 2vw, 1.4rem);
+  gap: 1.2rem;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.lab5-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.lab5-header .title {
+  text-align: left;
+  margin-bottom: 0.4rem;
+}
+
+.lab5-header .subtitle {
+  margin: 0;
+  color: var(--lab5-soft-ink);
+}
+
+.lab5-actions {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.lab5-page button.back-button {
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.settings-panel,
+.game-panel {
+  border: 1px solid var(--lab5-card-border);
+  border-radius: 22px;
+  background: var(--lab5-card);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 50px rgba(30, 64, 175, 0.1);
+}
+
+.settings-panel {
+  padding: clamp(1rem, 3vw, 1.7rem);
+}
+
+.panel-title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.panel-text {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  color: var(--lab5-soft-ink);
+}
+
+.settings-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1.5fr minmax(130px, 220px);
+}
+
+.field {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.field-title {
+  font-size: 0.95rem;
+}
+
+input[type="range"] {
+  accent-color: var(--lab5-accent);
+}
+
+.color-input {
+  width: 100%;
+  min-height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(100, 116, 139, 0.28);
+  background: white;
+  cursor: pointer;
+}
+
+.difficulty-preview {
+  margin-top: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  background: rgba(15, 107, 219, 0.08);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(130px, 1fr));
+  gap: 0.75rem;
+}
+
+.difficulty-preview p {
+  margin: 0;
+  color: #163a61;
+  font-size: 0.92rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-panel #startBtn {
+  margin-top: 1rem;
+}
+
+.game-panel {
+  padding: 1.2rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(90px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.hud-item {
+  border-radius: 12px;
+  padding: 0.6rem 0.72rem;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.hud-item span {
+  font-size: 0.78rem;
+  color: var(--lab5-soft-ink);
+}
+
+.hud-item strong {
+  font-size: 1.02rem;
+}
+
+.playfield {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 240px;
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid rgba(100, 116, 139, 0.25);
+  background:
+    linear-gradient(transparent 0 31px, rgba(136, 153, 177, 0.08) 31px 32px),
+    linear-gradient(90deg, transparent 0 31px, rgba(136, 153, 177, 0.08) 31px 32px),
+    radial-gradient(circle at center, rgba(56, 189, 248, 0.11), rgba(147, 197, 253, 0.03) 55%, transparent 78%);
+  background-size:
+    32px 32px,
+    32px 32px,
+    100% 100%;
+  overflow: hidden;
+  transition: box-shadow 0.14s ease;
+}
+
+.center-mark {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  transform: translate(-50%, -50%);
+  border: 1px dashed rgba(15, 107, 219, 0.45);
+  border-radius: 999px;
+}
+
+.target {
+  position: absolute;
+  width: var(--target-size);
+  height: var(--target-size);
+  border: 0;
+  border-radius: 6px;
+  background: var(--target-color);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+    0 12px 24px rgba(7, 16, 31, 0.25);
+  cursor: pointer;
+  transition:
+    left var(--target-move-duration) ease,
+    top var(--target-move-duration) ease,
+    transform 0.18s ease;
+  animation: targetPulse 0.8s ease-in-out infinite alternate;
+}
+
+.target:hover {
+  transform: scale(1.08);
+}
+
+.controls {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.playfield.hit-flash {
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.65) inset;
+}
+
+.playfield.miss-flash {
+  box-shadow: 0 0 0 2px rgba(244, 63, 94, 0.65) inset;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 90;
+}
+
+.modal-window {
+  width: min(460px, 100%);
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  box-shadow: 0 26px 60px rgba(15, 23, 42, 0.24);
+  padding: 1.2rem;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.modal-text {
+  margin: 0.55rem 0 0;
+  color: var(--lab5-soft-ink);
+}
+
+.modal-score {
+  margin: 0.9rem 0;
+  font-size: 1rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.modal-actions .back-button {
+  flex: 1;
+}
+
+@keyframes targetPulse {
+  from {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+      0 10px 22px rgba(7, 16, 31, 0.24);
+  }
+  to {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+      0 16px 30px rgba(7, 16, 31, 0.34);
+  }
+}
+
+@media (max-width: 980px) {
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .difficulty-preview {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+  }
+
+  .hud {
+    grid-template-columns: repeat(3, minmax(90px, 1fr));
+  }
+
+  .playfield {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .difficulty-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .hud {
+    grid-template-columns: repeat(2, minmax(90px, 1fr));
+  }
+
+  .lab5-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .playfield {
+    min-height: 180px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+}
