@@ -2,12 +2,12 @@
   var sortLib = {};
 
   function prepareArray(input) {
-    var hasUndefined = false;
+    var undefinedCount = 0;
     var result = [];
 
     for (var i = 0; i < input.length; i++) {
       if (input[i] === undefined) {
-        hasUndefined = true;
+        undefinedCount++;
       } else {
         result.push(input[i]);
       }
@@ -15,8 +15,18 @@
 
     return {
       array: result,
-      hasUndefined: hasUndefined
+      undefinedCount: undefinedCount
     };
+  }
+
+  function restoreUndefined(sorted, undefinedCount) {
+    var result = sorted.slice();
+
+    for (var i = 0; i < undefinedCount; i++) {
+      result.push(undefined);
+    }
+
+    return result;
   }
 
   function shouldSwap(a, b, asc) {
@@ -32,9 +42,10 @@
     console.log("Comparisons:", comparisons);
     console.log("Moves/Swaps:", moves);
 
-    if (prepared.hasUndefined) {
-      console.log("Warning: undefined elements were found and ignored.");
-      console.log("Length after removing undefined:", prepared.array.length);
+    if (prepared.undefinedCount > 0) {
+      console.log("Warning: undefined elements were found and restored at the end.");
+      console.log("Undefined count:", prepared.undefinedCount);
+      console.log("Length without undefined:", prepared.array.length);
     }
   }
 
@@ -57,6 +68,8 @@
         }
       }
     }
+
+    arr = restoreUndefined(arr, prepared.undefinedCount);
 
     printResult("Bubble sort", input.length, prepared, arr, comparisons, moves, asc);
     return arr;
@@ -88,6 +101,8 @@
       }
     }
 
+    arr = restoreUndefined(arr, prepared.undefinedCount);
+
     printResult("Selection sort", input.length, prepared, arr, comparisons, moves, asc);
     return arr;
   };
@@ -118,6 +133,8 @@
       arr[j + 1] = key;
       moves++;
     }
+
+    arr = restoreUndefined(arr, prepared.undefinedCount);
 
     printResult("Insertion sort", input.length, prepared, arr, comparisons, moves, asc);
     return arr;
@@ -151,6 +168,8 @@
         moves++;
       }
     }
+
+    arr = restoreUndefined(arr, prepared.undefinedCount);
 
     printResult("Shell sort", input.length, prepared, arr, comparisons, moves, asc);
     return arr;
@@ -226,6 +245,8 @@
     if (arr.length > 1) {
       quickSortRecursive(arr, 0, arr.length - 1, asc, stats);
     }
+
+    arr = restoreUndefined(arr, prepared.undefinedCount);
 
     printResult("Quick sort (Hoare)", input.length, prepared, arr, stats.comparisons, stats.moves, asc);
     return arr;
