@@ -1,0 +1,42 @@
+.lab6-page {
+  max-width: 640px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.lab6-page .subtitle {
+  margin: 0;
+  color: #6b7280;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(5, 56px);
+  gap: 8px;
+  padding: 0.75rem;
+  border: 1px solid #9ca3af;
+  border-radius: 12px;
+  background: #d1d5db;
+}
+
+.cell {
+  width: 56px;
+  height: 56px;
+  border: 1px solid #43316b;
+  border-radius: 8px;
+  background: #63519a;
+  cursor: pointer;
+}
+
+.cell.on {
+  background: #facc15;
+  box-shadow: 0 0 10px rgba(250, 204, 21, 0.8);
+}
+
+.status {
+  margin: 0;
+  text-align: center;
+}
