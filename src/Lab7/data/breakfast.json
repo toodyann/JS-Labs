@@ -1,0 +1,38 @@
+{
+  "category": {
+    "id": 3,
+    "name": "Сніданки",
+    "shortname": "breakfast",
+    "notes": "Nulla facilisi. Cras non velit vitae odio gravida vulputate."
+  },
+  "items": [
+    {
+      "id": 301,
+      "name": "Сирники",
+      "shortname": "syrnyky",
+      "description": "Сирники зі сметаною та ягідним джемом.",
+      "price": "145 UAH"
+    },
+    {
+      "id": 302,
+      "name": "Омлет",
+      "shortname": "omelette",
+      "description": "Омлет із сиром і зеленню, подається з тостом.",
+      "price": "130 UAH"
+    },
+    {
+      "id": 303,
+      "name": "Гранола-боул",
+      "shortname": "granola-bowl",
+      "description": "Йогурт, гранола, фрукти та мед.",
+      "price": "125 UAH"
+    },
+    {
+      "id": 304,
+      "name": "Тост з авокадо",
+      "shortname": "avocado-toast",
+      "description": "Цільнозерновий тост з авокадо та насінням.",
+      "price": "150 UAH"
+    }
+  ]
+}

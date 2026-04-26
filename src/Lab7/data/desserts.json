@@ -1,0 +1,38 @@
+{
+  "category": {
+    "id": 2,
+    "name": "Десерти",
+    "shortname": "desserts",
+    "notes": "Vestibulum ante ipsum primis in faucibus orci luctus."
+  },
+  "items": [
+    {
+      "id": 201,
+      "name": "Чизкейк",
+      "shortname": "cheesecake",
+      "description": "Класичний вершковий чизкейк з ягідним топінгом.",
+      "price": "120 UAH"
+    },
+    {
+      "id": 202,
+      "name": "Тірамісу",
+      "shortname": "tiramisu",
+      "description": "Десерт з сиром маскарпоне і кавовим бісквітом.",
+      "price": "135 UAH"
+    },
+    {
+      "id": 203,
+      "name": "Морозиво",
+      "shortname": "gelato",
+      "description": "Два смаки морозива на вибір з топінгом.",
+      "price": "90 UAH"
+    },
+    {
+      "id": 204,
+      "name": "Панна котта",
+      "shortname": "panna-cotta",
+      "description": "Ніжний вершковий десерт з ваніллю та соусом.",
+      "price": "110 UAH"
+    }
+  ]
+}

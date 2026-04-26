@@ -1,0 +1,148 @@
+.lab7-page {
+  max-width: 1080px;
+  margin: 0 auto;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.lab7-header {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.top-nav {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.top-nav-link {
+  display: inline-block;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #111827;
+  background: #ffffff;
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.top-nav-link:hover {
+  transform: translateY(-1px);
+  border-color: #cbd5f5;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+
+.lab7-page .title,
+.lab7-page .subtitle {
+  margin: 0;
+  text-align: left;
+}
+
+.lab7-page .subtitle {
+  color: #6b7280;
+}
+
+.content {
+  display: grid;
+  gap: 1rem;
+}
+
+.panel {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 1rem;
+}
+
+.panel h2,
+.panel p {
+  margin: 0;
+}
+
+.panel p + p {
+  margin-top: 0.6rem;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+
+.category-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f9fafb;
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.category-card h3,
+.category-card p {
+  margin: 0;
+}
+
+.category-link,
+.special-link,
+.inline-link {
+  display: inline-block;
+  text-decoration: none;
+  color: #1d4ed8;
+  font-weight: 600;
+}
+
+.special-link {
+  margin-top: 0.2rem;
+}
+
+.items-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.85rem;
+}
+
+.item-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #ffffff;
+  padding: 0.8rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.item-image {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.item-card h3,
+.item-card p {
+  margin: 0;
+}
+
+.item-price {
+  font-weight: 700;
+}
+
+.status-text {
+  margin: 0;
+  color: #374151;
+}
+
+@media (max-width: 640px) {
+  .lab7-page {
+    padding: 0.85rem;
+  }
+}

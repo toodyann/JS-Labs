@@ -1,0 +1,38 @@
+{
+  "category": {
+    "id": 1,
+    "name": "Напої",
+    "shortname": "drinks",
+    "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+  },
+  "items": [
+    {
+      "id": 101,
+      "name": "Еспресо",
+      "shortname": "espresso",
+      "description": "Міцна кава з насиченим смаком.",
+      "price": "65 UAH"
+    },
+    {
+      "id": 102,
+      "name": "Капучино",
+      "shortname": "cappuccino",
+      "description": "Кава з молочною пінкою та збалансованим ароматом.",
+      "price": "85 UAH"
+    },
+    {
+      "id": 103,
+      "name": "Матча латте",
+      "shortname": "matcha-latte",
+      "description": "Зелений чай матча з молоком на вибір.",
+      "price": "95 UAH"
+    },
+    {
+      "id": 104,
+      "name": "Лимонад",
+      "shortname": "lemonade",
+      "description": "Освіжаючий цитрусовий напій з м'ятою.",
+      "price": "78 UAH"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Напої",
+      "shortname": "drinks",
+      "notes": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    },
+    {
+      "id": 2,
+      "name": "Десерти",
+      "shortname": "desserts",
+      "notes": "Vestibulum ante ipsum primis in faucibus orci luctus."
+    },
+    {
+      "id": 3,
+      "name": "Сніданки",
+      "shortname": "breakfast",
+      "notes": "Nulla facilisi. Cras non velit vitae odio gravida vulputate."
+    },
+    {
+      "id": 4,
+      "name": "IT-послуги",
+      "shortname": "it-services",
+      "notes": "Послуги налаштування, супроводу та консультацій."
+    }
+  ]
+}
