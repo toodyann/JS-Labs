@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab-8 Konovalov</title>
+    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/svg+xml" href="../favicon.ico" />
+  </head>
+  <body>
+    <main class="page lab8-page">
+      <header class="lab8-header">
+        <a class="back-button" href="../index.html">Назад до лабораторних</a>
+        <h1 class="title">Lab 8: Adaptive UI</h1>
+        <p class="subtitle">Large (≥768px) та Medium (&lt;768px)</p>
+      </header>
+
+      <section class="menu-section">
+        <button
+          class="hamburger"
+          id="hamburgerButton"
+          aria-controls="mainMenu"
+          aria-expanded="false"
+          aria-label="Відкрити меню"
+        >
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </button>
+
+        <nav id="mainMenu" class="main-menu" aria-label="Основна навігація">
+          <a href="#home" class="menu-item">
+            <span class="menu-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+                <path d="M240,208H224V136l2.34,2.34A8,8,0,0,0,237.66,127L139.31,28.68a16,16,0,0,0-22.62,0L18.34,127a8,8,0,0,0,11.32,11.31L32,136v72H16a8,8,0,0,0,0,16H240a8,8,0,0,0,0-16ZM48,120l80-80,80,80v88H160V152a8,8,0,0,0-8-8H104a8,8,0,0,0-8,8v56H48Zm96,88H112V160h32Z"></path>
+              </svg>
+            </span>
+            <span class="menu-text">Головна</span>
+          </a>
+          <a href="#gallery" class="menu-item">
+            <span class="menu-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+                <path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path>
+              </svg>
+            </span>
+            <span class="menu-text">Галерея</span>
+          </a>
+          <a href="#services" class="menu-item">
+            <span class="menu-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+                <path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm88-29.84q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.21,107.21,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.71,107.71,0,0,0-26.25-10.87,8,8,0,0,0-7.06,1.49L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.21,107.21,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06Zm-16.1-6.5a73.93,73.93,0,0,1,0,8.68,8,8,0,0,0,1.74,5.48l14.19,17.73a91.57,91.57,0,0,1-6.23,15L187,173.11a8,8,0,0,0-5.1,2.64,74.11,74.11,0,0,1-6.14,6.14,8,8,0,0,0-2.64,5.1l-2.51,22.58a91.32,91.32,0,0,1-15,6.23l-17.74-14.19a8,8,0,0,0-5-1.75h-.48a73.93,73.93,0,0,1-8.68,0,8,8,0,0,0-5.48,1.74L100.45,215.8a91.57,91.57,0,0,1-15-6.23L82.89,187a8,8,0,0,0-2.64-5.1,74.11,74.11,0,0,1-6.14-6.14,8,8,0,0,0-5.1-2.64L46.43,170.6a91.32,91.32,0,0,1-6.23-15l14.19-17.74a8,8,0,0,0,1.74-5.48,73.93,73.93,0,0,1,0-8.68,8,8,0,0,0-1.74-5.48L40.2,100.45a91.57,91.57,0,0,1,6.23-15L69,82.89a8,8,0,0,0,5.1-2.64,74.11,74.11,0,0,1,6.14-6.14A8,8,0,0,0,82.89,69L85.4,46.43a91.32,91.32,0,0,1,15-6.23l17.74,14.19a8,8,0,0,0,5.48,1.74,73.93,73.93,0,0,1,8.68,0,8,8,0,0,0,5.48-1.74L155.55,40.2a91.57,91.57,0,0,1,15,6.23L173.11,69a8,8,0,0,0,2.64,5.1,74.11,74.11,0,0,1,6.14,6.14,8,8,0,0,0,5.1,2.64l22.58,2.51a91.32,91.32,0,0,1,6.23,15l-14.19,17.74A8,8,0,0,0,199.87,123.66Z"></path>
+              </svg>
+            </span>
+            <span class="menu-text">Налаштування</span>
+          </a>
+          <a href="#contacts" class="menu-item">
+            <span class="menu-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+                <path d="M222.37,158.46l-47.11-21.11-.13-.06a16,16,0,0,0-15.17,1.4,8.12,8.12,0,0,0-.75.56L134.87,160c-15.42-7.49-31.34-23.29-38.83-38.51l20.78-24.71c.2-.25.39-.5.57-.77a16,16,0,0,0,1.32-15.06l0-.12L97.54,33.64a16,16,0,0,0-16.62-9.52A56.26,56.26,0,0,0,32,80c0,79.4,64.6,144,144,144a56.26,56.26,0,0,0,55.88-48.92A16,16,0,0,0,222.37,158.46ZM176,208A128.14,128.14,0,0,1,48,80,40.2,40.2,0,0,1,82.87,40a.61.61,0,0,0,0,.12l21,47L83.2,111.86a6.13,6.13,0,0,0-.57.77,16,16,0,0,0-1,15.7c9.06,18.53,27.73,37.06,46.46,46.11a16,16,0,0,0,15.75-1.14,8.44,8.44,0,0,0,.74-.56L168.89,152l47,21.05h0s.08,0,.11,0A40.21,40.21,0,0,1,176,208Z"></path>
+              </svg>
+            </span>
+            <span class="menu-text">Контакти</span>
+          </a>
+        </nav>
+      </section>
+
+      <section class="carousel" id="carousel" aria-label="Карусель зображень">
+        <div class="carousel-track" id="carouselTrack">
+          <article class="slide">
+            <img
+              src="https://placehold.co/1200x600/0f766e/f0fdfa?text=Slide+1"
+              alt="Слайд 1"
+            />
+          </article>
+          <article class="slide">
+            <img
+              src="https://placehold.co/1200x600/1d4ed8/dbeafe?text=Slide+2"
+              alt="Слайд 2"
+            />
+          </article>
+          <article class="slide">
+            <img
+              src="https://placehold.co/1200x600/92400e/fef3c7?text=Slide+3"
+              alt="Слайд 3"
+            />
+          </article>
+          <article class="slide">
+            <img
+              src="https://placehold.co/1200x600/be123c/ffe4e6?text=Slide+4"
+              alt="Слайд 4"
+            />
+          </article>
+        </div>
+
+        <button class="carousel-arrow prev" id="prevSlide" aria-label="Попередній слайд">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+            <path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+          </svg>
+        </button>
+        <button class="carousel-arrow next" id="nextSlide" aria-label="Наступний слайд">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000" viewBox="0 0 256 256">
+            <path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+          </svg>
+        </button>
+
+        <div class="carousel-dots" id="carouselDots" aria-label="Індикатори слайдів"></div>
+      </section>
+
+      <section class="image-groups" aria-label="Адаптивні зображення">
+        <div class="large-only" id="gallery">
+          <h2>Лише для Large-пристроїв</h2>
+          <div class="image-grid">
+            <img src="https://placehold.co/480x300/111827/e5e7eb?text=Large+Image+1" alt="Large 1" />
+            <img src="https://placehold.co/480x300/1f2937/f3f4f6?text=Large+Image+2" alt="Large 2" />
+            <img src="https://placehold.co/480x300/374151/f9fafb?text=Large+Image+3" alt="Large 3" />
+          </div>
+        </div>
+
+        <div class="medium-only">
+          <h2>Лише для Medium-пристроїв</h2>
+          <div class="image-grid">
+            <img src="https://placehold.co/420x260/0369a1/e0f2fe?text=Medium+Image+1" alt="Medium 1" />
+            <img src="https://placehold.co/420x260/7c3aed/ede9fe?text=Medium+Image+2" alt="Medium 2" />
+            <img src="https://placehold.co/420x260/0f766e/ccfbf1?text=Medium+Image+3" alt="Medium 3" />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
